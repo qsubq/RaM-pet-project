@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/layout/fragment_character.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/layout/activity_main.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/layout/character_item_layout.xml" value="0.22" />
+        <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/layout/fragment_character.xml" value="0.25" />
+        <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
       </map>
     </option>
   </component>
