@@ -1,4 +1,12 @@
 package com.github.qsubq.rampetproject.data.api
 
+import com.github.qsubq.rampetproject.model.CharacterModel
+import retrofit2.Response
+import retrofit2.http.GET
+import retrofit2.http.Path
+
 interface ApiService {
+
+    @GET("character/{id}")
+    suspend fun getAllCharacters(@Path("id") randomValue : String) : Response<CharacterModel>
 }
