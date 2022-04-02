@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.model.CharacterModelItem
+import com.github.qsubq.rampetproject.screen.character.CharacterFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.character_item_layout.view.*
 
@@ -31,5 +32,12 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
     fun setList(list : List<CharacterModelItem>){
         listCharacter = list
         notifyDataSetChanged()
+    }
+
+    override fun onViewAttachedToWindow(holder: CharacterViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        holder.itemView.setOnClickListener{
+            CharacterFragment.onClickItem(listCharacter[holder.adapterPosition])
+        }
     }
 }

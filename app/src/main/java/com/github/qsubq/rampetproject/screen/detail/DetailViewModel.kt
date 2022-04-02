@@ -1,4 +1,7 @@
 package com.github.qsubq.rampetproject.screen.detail
 
-class DetailViewModel {
+import androidx.lifecycle.ViewModel
+
+class DetailViewModel : ViewModel() {
+
 }

@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.RecyclerView
+import com.github.qsubq.rampetproject.APP
 import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.adapter.CharacterAdapter
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
-import kotlinx.coroutines.NonDisposableHandle.parent
+import com.github.qsubq.rampetproject.model.CharacterModelItem
 
 
 class CharacterFragment : Fragment() {
@@ -23,7 +23,7 @@ class CharacterFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCharacterBinding.inflate(layoutInflater,container , false)
         return binding.root
     }
@@ -44,5 +44,13 @@ class CharacterFragment : Fragment() {
             list.body()?. let {adapter.setList(it)}
         }
 
+    }
+
+    companion object{
+        fun onClickItem(characterModelItem: CharacterModelItem){
+            val bundle = Bundle()
+            bundle.putSerializable("character",characterModelItem)
+            APP.navController.navigate(R.id.action_characterFragment_to_detailFragment, bundle)
+        }
     }
 }

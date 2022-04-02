@@ -10,7 +10,7 @@ class Repository {
         val randomList = mutableListOf<Int>()
 
         for (i in 0..20){
-            randomList.add((1..860).random())
+            randomList.add((1..826).random())
         }
 
         return RetrofitInstance.api.getAllCharacters(randomList.toString())

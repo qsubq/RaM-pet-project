@@ -1,5 +1,8 @@
 package com.github.qsubq.rampetproject.model
 
+import androidx.annotation.Nullable
+import java.io.Serializable
+
 data class CharacterModelItem(
     val created: String,
     val episode: List<String>,
@@ -13,4 +16,4 @@ data class CharacterModelItem(
     val status: String,
     val type: String,
     val url: String
-)
+) : Serializable
