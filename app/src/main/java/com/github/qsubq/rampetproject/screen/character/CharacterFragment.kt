@@ -19,7 +19,6 @@ class CharacterFragment : Fragment() {
     private lateinit var recyclerVIew : RecyclerView
     private lateinit var adapter : CharacterAdapter
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,10 +38,15 @@ class CharacterFragment : Fragment() {
         adapter = CharacterAdapter()
         recyclerVIew.adapter = adapter
 
-        viewModel.getAllCharacters()
+
+        if (viewModel.characterList.value == null){
+            viewModel.getAllCharacters()
+        }
+
         viewModel.characterList.observe(viewLifecycleOwner){list ->
             list.body()?. let {adapter.setList(it)}
         }
+
 
     }
 
@@ -53,4 +57,5 @@ class CharacterFragment : Fragment() {
             APP.navController.navigate(R.id.action_characterFragment_to_detailFragment, bundle)
         }
     }
+
 }
