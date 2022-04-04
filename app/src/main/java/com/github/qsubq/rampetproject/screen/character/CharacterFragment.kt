@@ -39,6 +39,7 @@ class CharacterFragment : Fragment() {
         recyclerVIew.adapter = adapter
 
 
+
         if (viewModel.characterList.value == null){
             viewModel.getAllCharacters()
         }
@@ -47,7 +48,10 @@ class CharacterFragment : Fragment() {
             list.body()?. let {adapter.setList(it)}
         }
 
-
+        binding.SwipeRefreshLayout.setOnRefreshListener {
+            viewModel.getAllCharacters()
+            binding.SwipeRefreshLayout.isRefreshing = false
+        }
     }
 
     companion object{
