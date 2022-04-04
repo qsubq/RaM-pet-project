@@ -38,6 +38,12 @@ class DetailFragment : Fragment() {
         binding.tvOrigin.text = currentItem.origin.name
         binding.tvSpecies.text = currentItem.species
         binding.tvStatus.text = currentItem.status
+
+        when(currentItem.status){
+            "Dead" -> binding.imgStatus.setImageResource(R.drawable.ic_dead_status_image)
+            "Alive" -> binding.imgStatus.setImageResource(R.drawable.ic_alive_status_image)
+            else -> binding.imgStatus.setImageResource(R.drawable.ic_unknown_status_image)
+        }
     }
 
 }

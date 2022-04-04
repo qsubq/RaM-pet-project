@@ -17,16 +17,26 @@
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="centerCrop" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_status"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/ic_dead_status_image"
+        app:layout_constraintEnd_toStartOf="@+id/tv_status"
+        app:layout_constraintHorizontal_bias="0.659"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
     <TextView
         android:id="@+id/tv_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:text="Status"
         android:textColor="@color/grey"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
@@ -40,11 +50,12 @@
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.588"
+        app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_character" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="380dp"
         android:layout_height="1dp"
         android:layout_marginTop="24dp"
