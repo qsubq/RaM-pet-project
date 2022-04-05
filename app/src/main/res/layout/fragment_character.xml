@@ -7,15 +7,13 @@
     tools:context=".screen.character.CharacterFragment"
     android:id="@+id/SwipeRefreshLayout">
 
-    <ScrollView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_characters"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_characters"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/character_item_layout"/>
-    </ScrollView>
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/character_item_layout"/>
+
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

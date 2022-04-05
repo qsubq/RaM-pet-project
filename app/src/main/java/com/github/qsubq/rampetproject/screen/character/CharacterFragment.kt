@@ -38,8 +38,6 @@ class CharacterFragment : Fragment() {
         adapter = CharacterAdapter()
         recyclerVIew.adapter = adapter
 
-
-
         if (viewModel.characterList.value == null){
             viewModel.getAllCharacters()
         }
