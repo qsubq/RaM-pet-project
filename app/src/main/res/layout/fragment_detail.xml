@@ -15,7 +15,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:layout_marginTop="5dp"/>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_status"
@@ -28,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_name"
         android:layout_width="320dp"
         android:layout_height="45dp"
@@ -56,7 +57,7 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="380dp"
+        android:layout_width="360dp"
         android:layout_height="1dp"
         android:layout_marginTop="24dp"
         android:background="@color/design_default_color_primary_variant"
@@ -65,57 +66,75 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_status" />
 
-    <TextView
-        android:id="@+id/tv_species"
-        android:layout_width="250dp"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Human"
-        android:textColor="#474545"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/tv_origin"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:text="Eart (Replacement Dimension)"
-        android:textColor="#3A3737"
-        android:textSize="24sp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="64dp"
-        android:text="Species:"
-        android:textColor="@color/grey"
-        android:textSize="24sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_status" />
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="108dp"
-        android:text="Origin:"
-        android:textColor="@color/grey"
-        android:textSize="24sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
-        app:layout_constraintStart_toStartOf="parent" />
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="6dp"
+            android:text="Species"
+            android:textColor="@color/white_gray"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_species"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="Human"
+            android:textColor="@color/grey"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="Type"
+            android:textColor="@color/white_gray"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parasite"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            android:layout_marginBottom="6dp"/>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="Origin"
+            android:textColor="@color/white_gray"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_origin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Earh (Replacement Dimension)"
+            android:textColor="@color/grey"
+            android:textSize="20sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,6 +39,13 @@ class DetailFragment : Fragment() {
         binding.tvSpecies.text = currentItem.species
         binding.tvStatus.text = currentItem.status
 
+        if (currentItem.type == ""){
+            binding.tvType.text = "Unknown"
+        }
+        else{
+            binding.tvType.text = currentItem.type
+        }
+
         when(currentItem.status){
             "Dead" -> binding.imgStatus.setImageResource(R.drawable.ic_dead_status_image)
             "Alive" -> binding.imgStatus.setImageResource(R.drawable.ic_alive_status_image)
