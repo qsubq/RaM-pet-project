@@ -33,7 +33,6 @@
         android:id="@+id/tv_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Status"
         android:textColor="@color/grey"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +45,6 @@
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="12dp"
-        android:text="Morty Smith"
         android:textColor="@color/grey"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -85,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="6dp"
-            android:text="Species"
+            android:text="@string/species_text_field"
             android:textColor="@color/white_gray"
             android:textSize="20sp"
             android:textStyle="italic" />
@@ -95,7 +93,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:text="Human"
             android:textColor="@color/grey"
             android:textSize="20sp" />
 
@@ -103,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:text="Type"
+            android:text="@string/type_text_field"
             android:textColor="@color/white_gray"
             android:textSize="20sp"
             android:textStyle="italic" />
@@ -112,7 +109,6 @@
             android:id="@+id/tv_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Parasite"
             android:textColor="@color/grey"
             android:textSize="20sp"
             android:layout_marginBottom="6dp"/>
@@ -122,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:text="Origin"
+            android:text="@string/origin_text_field"
             android:textColor="@color/white_gray"
             android:textSize="20sp"
             android:textStyle="italic" />
@@ -131,7 +127,6 @@
             android:id="@+id/tv_origin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Earh (Replacement Dimension)"
             android:textColor="@color/grey"
             android:textSize="20sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>

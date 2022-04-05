@@ -2,4 +2,8 @@
     <string name="app_name">RaM pet project</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="origin_text_field">Origin</string>
+    <string name="species_text_field">Species</string>
+    <string name="type_text_field">Type</string>
+    <string name="unknown_type">Unknown</string>
 </resources>

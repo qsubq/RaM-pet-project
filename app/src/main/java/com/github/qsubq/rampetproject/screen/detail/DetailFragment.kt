@@ -40,7 +40,7 @@ class DetailFragment : Fragment() {
         binding.tvStatus.text = currentItem.status
 
         if (currentItem.type == ""){
-            binding.tvType.text = "Unknown"
+            binding.tvType.text = R.string.unknown_type.toString()
         }
         else{
             binding.tvType.text = currentItem.type
