@@ -31,8 +31,8 @@ class SplashFragment : Fragment() {
     private fun init() {
         binding.imageView.setImageResource(R.mipmap.ic_splash_image_foreground)
         CoroutineScope(Dispatchers.Main).launch {
-            binding.ProgressBarSplash.max = 10
-            val value = 9
+            binding.ProgressBarSplash.max = 100
+            val value = 90
             ObjectAnimator.ofInt(binding.ProgressBarSplash, "progress", value).setDuration(2000).start()
 
             delay(2000)

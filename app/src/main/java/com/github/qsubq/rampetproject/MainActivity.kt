@@ -3,14 +3,11 @@ package com.github.qsubq.rampetproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.NavigatorProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.github.qsubq.rampetproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding : ActivityMainBinding
+    private lateinit var binding : ActivityMainBinding
     lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
