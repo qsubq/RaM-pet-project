@@ -20,8 +20,6 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
-
-        currentItem = requireArguments().getSerializable("character") as CharacterModelItem
         return binding.root
 
     }
@@ -39,10 +37,12 @@ class DetailFragment : Fragment() {
         binding.tvSpecies.text = currentItem.species
         binding.tvStatus.text = currentItem.status
 
-        if (currentItem.type == ""){
-            binding.tvType.text = R.string.unknown_type.toString()
+        binding.tvId.text = currentItem.id.toString()
+
+        if (currentItem.type == "" || currentItem.type == " ") {
+            binding.tvType.text = getString(R.string.unknown_type)
         }
-        else{
+        else {
             binding.tvType.text = currentItem.type
         }
 
