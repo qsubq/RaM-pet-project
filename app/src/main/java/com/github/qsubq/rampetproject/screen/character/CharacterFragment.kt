@@ -1,17 +1,21 @@
 package com.github.qsubq.rampetproject.screen.character
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.APP
 import com.github.qsubq.rampetproject.R
-import com.github.qsubq.rampetproject.adapter.CharacterAdapter
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
 import com.github.qsubq.rampetproject.model.CharacterModelItem
+import com.google.android.material.snackbar.Snackbar
 
 
 class CharacterFragment : Fragment() {
@@ -38,9 +42,15 @@ class CharacterFragment : Fragment() {
         adapter = CharacterAdapter()
         recyclerVIew.adapter = adapter
 
+
+
         if (viewModel.characterList.value == null){
-            viewModel.getAllCharacters()
+            val isOnline: Boolean = viewModel.getAllCharacters()
+            if(!isOnline){
+                view?.let { Snackbar.make(it, getString(R.string.snack_bar_text),6000).show() }
+            }
         }
+
 
         viewModel.characterList.observe(viewLifecycleOwner){list ->
             list.body()?. let {adapter.setList(it)}
@@ -50,6 +60,8 @@ class CharacterFragment : Fragment() {
             viewModel.getAllCharacters()
             binding.SwipeRefreshLayout.isRefreshing = false
         }
+
+
     }
 
     companion object{
@@ -59,5 +71,6 @@ class CharacterFragment : Fragment() {
             APP.navController.navigate(R.id.action_characterFragment_to_detailFragment, bundle)
         }
     }
+
 
 }

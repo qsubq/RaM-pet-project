@@ -1,4 +1,4 @@
-package com.github.qsubq.rampetproject.adapter
+package com.github.qsubq.rampetproject.screen.character
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.model.CharacterModelItem
-import com.github.qsubq.rampetproject.screen.character.CharacterFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.character_item_layout.view.*
 

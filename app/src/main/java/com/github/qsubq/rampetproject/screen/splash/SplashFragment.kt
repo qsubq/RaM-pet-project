@@ -13,7 +13,7 @@ import kotlinx.coroutines.*
 
 
 class SplashFragment : Fragment() {
-   lateinit var binding : FragmentSplashBinding
+    private lateinit var binding : FragmentSplashBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

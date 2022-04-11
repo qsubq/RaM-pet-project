@@ -1,6 +1,5 @@
 package com.github.qsubq.rampetproject.model
 
-import androidx.annotation.Nullable
 import java.io.Serializable
 
 data class CharacterModelItem(
