@@ -1,6 +1,7 @@
-#RaM application
+# RaM application
 This app can showing Rick and Morty character
-##Stack:
+
+## Stack:
 - Kotlin
 - Picasso
 - MVVM
