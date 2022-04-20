@@ -1,10 +1,6 @@
 package com.github.qsubq.rampetproject.screen.character
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,7 +63,7 @@ class CharacterFragment : Fragment() {
     companion object{
         fun onClickItem(characterModelItem: CharacterModelItem){
             val bundle = Bundle()
-            bundle.putSerializable("character",characterModelItem)
+            bundle.putParcelable("character",characterModelItem)
             APP.navController.navigate(R.id.action_characterFragment_to_detailFragment, bundle)
         }
     }

@@ -8,10 +8,8 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.data.repository.Repository
 import com.github.qsubq.rampetproject.model.CharacterModel
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
@@ -32,7 +30,6 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
-
     private fun isOnline(context: Context): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -41,7 +38,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
         if (capabilities != null) {
             if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)
                 || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+                Log.i("Internet", "Device is using network connection")
                 return true
             } else {
                 Log.i("Internet", "No network connection")

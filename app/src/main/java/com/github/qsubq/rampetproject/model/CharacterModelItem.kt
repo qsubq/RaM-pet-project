@@ -1,10 +1,13 @@
 package com.github.qsubq.rampetproject.model
 
-import java.io.Serializable
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class CharacterModelItem(
     val created: String,
-    val episode: List<String>,
+    val episode: ArrayList<String>,
     val gender: String,
     val id: Int,
     val image: String,
@@ -15,4 +18,4 @@ data class CharacterModelItem(
     val status: String,
     val type: String,
     val url: String
-) : Serializable
+) : Parcelable

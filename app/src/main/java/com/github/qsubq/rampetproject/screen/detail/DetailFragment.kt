@@ -1,10 +1,10 @@
 package com.github.qsubq.rampetproject.screen.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.FragmentDetailBinding
 import com.github.qsubq.rampetproject.model.CharacterModelItem
@@ -26,7 +26,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        currentItem = requireArguments().getSerializable("character") as CharacterModelItem
+        currentItem = arguments?.getParcelable<CharacterModelItem>("character") as CharacterModelItem
         init()
     }
 
