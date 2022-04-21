@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.APP
 import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
-import com.github.qsubq.rampetproject.model.CharacterModelItem
+import com.github.qsubq.rampetproject.model.characterModel.CharacterModelItem
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -44,9 +44,11 @@ class CharacterFragment : Fragment() {
         val viewModel = ViewModelProvider(this).get(CharacterViewModel::class.java)
 
         if (viewModel.characterList.value == null){
-            val isOnline: Boolean = viewModel.getAllCharacters()
-            if(!isOnline){
-                view?.let { Snackbar.make(it, getString(R.string.snack_bar_text),6000).show() }
+            if(viewModel.isOnline()){
+                viewModel.getRandomCharacters()
+            }
+            else{
+
             }
         }
 
@@ -55,7 +57,7 @@ class CharacterFragment : Fragment() {
         }
 
         binding.SwipeRefreshLayout.setOnRefreshListener {
-            viewModel.getAllCharacters()
+            viewModel.getRandomCharacters()
             binding.SwipeRefreshLayout.isRefreshing = false
         }
     }

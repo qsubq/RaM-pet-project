@@ -1,10 +1,10 @@
-package com.github.qsubq.rampetproject.model
+package com.github.qsubq.rampetproject.model.characterModel
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Location(
+data class Origin(
     val name: String,
     val url: String
 ) : Parcelable

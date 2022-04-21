@@ -5,13 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.R
-import com.github.qsubq.rampetproject.model.CharacterModelItem
+import com.github.qsubq.rampetproject.model.characterModel.CharacterModelItem
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.character_item_layout.view.*
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
     class CharacterViewHolder(view : View) : RecyclerView.ViewHolder(view)
 
+    // TODO: change it
     private var listCharacter = emptyList<CharacterModelItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {

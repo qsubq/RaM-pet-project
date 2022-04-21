@@ -12,6 +12,17 @@
         </menu>
     </item>
 
+    <item android:title="Episodes">
+        <menu>
+            <group
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/episodesFragment"
+                    android:title="@string/random_character" />
+            </group>
+        </menu>
+    </item>
+
 
 
 

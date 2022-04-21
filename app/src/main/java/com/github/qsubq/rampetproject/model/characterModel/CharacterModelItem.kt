@@ -1,4 +1,4 @@
-package com.github.qsubq.rampetproject.model
+package com.github.qsubq.rampetproject.model.characterModel
 
 
 import android.os.Parcelable
