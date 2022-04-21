@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/characterFragment">
 
     <fragment
         android:id="@+id/characterFragment"
         android:name="com.github.qsubq.rampetproject.screen.character.CharacterFragment"
-        android:label="fragment_character"
+        android:label="Random character"
         tools:layout="@layout/fragment_character" >
         <action
             android:id="@+id/action_characterFragment_to_detailFragment"
@@ -17,19 +17,10 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.github.qsubq.rampetproject.screen.detail.DetailFragment"
-        android:label="fragment_detail"
+        android:label="Detail character"
         tools:layout="@layout/fragment_detail" >
         <action
             android:id="@+id/action_detailFragment_to_characterFragment"
-            app:destination="@id/characterFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.github.qsubq.rampetproject.screen.splash.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splashFragment_to_characterFragment"
             app:destination="@id/characterFragment" />
     </fragment>
 </navigation>

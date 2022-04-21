@@ -6,5 +6,6 @@
     <string name="species_text_field">Species</string>
     <string name="type_text_field">Type</string>
     <string name="unknown_type">unknown</string>
-    <string name="snack_bar_text">Device haven\'t network connection</string>
+    <string name="snack_bar_text">No connection</string>
+    <string name="random_character">Random Character</string>
 </resources>
