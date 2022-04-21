@@ -30,15 +30,18 @@ class CharacterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
+        getCharacter()
     }
 
     private fun init() {
-        val viewModel = ViewModelProvider(this).get(CharacterViewModel::class.java)
         recyclerVIew = binding.rvCharacters
         adapter = CharacterAdapter()
         recyclerVIew.adapter = adapter
 
+    }
 
+    private fun getCharacter(){
+        val viewModel = ViewModelProvider(this).get(CharacterViewModel::class.java)
 
         if (viewModel.characterList.value == null){
             val isOnline: Boolean = viewModel.getAllCharacters()
@@ -46,7 +49,6 @@ class CharacterFragment : Fragment() {
                 view?.let { Snackbar.make(it, getString(R.string.snack_bar_text),6000).show() }
             }
         }
-
 
         viewModel.characterList.observe(viewLifecycleOwner){list ->
             list.body()?. let {adapter.setList(it)}
@@ -56,8 +58,6 @@ class CharacterFragment : Fragment() {
             viewModel.getAllCharacters()
             binding.SwipeRefreshLayout.isRefreshing = false
         }
-
-
     }
 
     companion object{
