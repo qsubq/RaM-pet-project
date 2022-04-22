@@ -1,28 +1,27 @@
 package com.github.qsubq.rampetproject.screen.character
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.github.qsubq.rampetproject.R
+import com.github.qsubq.rampetproject.databinding.CharacterItemLayoutBinding
 import com.github.qsubq.rampetproject.model.characterModel.CharacterModelItem
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.character_item_layout.view.*
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
-    class CharacterViewHolder(view : View) : RecyclerView.ViewHolder(view)
+    class CharacterViewHolder(val binding : CharacterItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
-    // TODO: change it
     private var listCharacter = emptyList<CharacterModelItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.character_item_layout, parent, false)
-        return CharacterViewHolder(view)
+        val itemBinding = CharacterItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent,false)
+        return CharacterViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        holder.itemView.tv_item_name.text = listCharacter[position].name
-        Picasso.get().load(listCharacter[position].image).into(holder.itemView.img_item_character)
+        holder.binding.apply {
+            tvItemName.text = listCharacter[position].name
+            Picasso.get().load(listCharacter[position].image).into(imgItemCharacter)
+        }
     }
 
     override fun getItemCount(): Int {

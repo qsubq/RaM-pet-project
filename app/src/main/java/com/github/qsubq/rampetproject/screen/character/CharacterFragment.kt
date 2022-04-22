@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.github.qsubq.rampetproject.APP
+import com.github.qsubq.rampetproject.MainActivity
 import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
 import com.github.qsubq.rampetproject.model.characterModel.CharacterModelItem
-import com.google.android.material.snackbar.Snackbar
 
 
 class CharacterFragment : Fragment() {
@@ -37,7 +36,6 @@ class CharacterFragment : Fragment() {
         recyclerVIew = binding.rvCharacters
         adapter = CharacterAdapter()
         recyclerVIew.adapter = adapter
-
     }
 
     private fun getCharacter(){
@@ -63,10 +61,12 @@ class CharacterFragment : Fragment() {
     }
 
     companion object{
+        private val mainActivity = MainActivity()
+
         fun onClickItem(characterModelItem: CharacterModelItem){
             val bundle = Bundle()
             bundle.putParcelable("character",characterModelItem)
-            APP.navController.navigate(R.id.action_characterFragment_to_detailFragment, bundle)
+            mainActivity.navController.navigate(R.id.action_characterFragment_to_detailFragment, bundle)
         }
     }
 

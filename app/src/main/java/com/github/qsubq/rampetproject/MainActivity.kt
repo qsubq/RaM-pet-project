@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        APP = this
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -42,4 +40,5 @@ class MainActivity : AppCompatActivity() {
 
         return navController.navigateUp(appBarConfig) || super.onSupportNavigateUp()
     }
+
 }
