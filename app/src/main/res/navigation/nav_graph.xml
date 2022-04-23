@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/episodesFragment"
         android:name="com.github.qsubq.rampetproject.screen.episodes.EpisodesFragment"
-        android:label="fragment_episodes"
+        android:label="Episodes"
         tools:layout="@layout/fragment_episodes" >
         <action
             android:id="@+id/action_episodesFragment_to_characterFragment"

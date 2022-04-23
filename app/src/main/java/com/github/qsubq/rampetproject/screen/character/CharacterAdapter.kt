@@ -10,6 +10,7 @@ import com.squareup.picasso.Picasso
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
     class CharacterViewHolder(val binding : CharacterItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
+
     private var listCharacter = emptyList<CharacterModelItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {

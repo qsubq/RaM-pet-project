@@ -8,6 +8,7 @@
     android:id="@+id/SwipeRefreshLayout">
 
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_characters"
         android:layout_width="match_parent"

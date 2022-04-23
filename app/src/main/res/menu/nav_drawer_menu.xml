@@ -18,7 +18,7 @@
                 android:checkableBehavior="single">
                 <item
                     android:id="@+id/episodesFragment"
-                    android:title="@string/random_character" />
+                    android:title="@string/episodes" />
             </group>
         </menu>
     </item>
