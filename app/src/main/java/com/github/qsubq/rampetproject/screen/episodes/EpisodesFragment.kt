@@ -11,6 +11,7 @@ import androidx.lifecycle.get
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.databinding.FragmentEpisodesBinding
 import com.github.qsubq.rampetproject.screen.character.CharacterAdapter
+import com.google.android.material.snackbar.Snackbar
 
 class EpisodesFragment : Fragment() {
     private lateinit var binding : FragmentEpisodesBinding
@@ -45,6 +46,11 @@ class EpisodesFragment : Fragment() {
                 viewModel.getAllEpisodes()
             }
             else{
+                view?.let { Snackbar.make(it,"Connection error",5000)
+                    .setAction("Try again") {
+                        getEpisodes()
+                    }
+                    .show()}
 
             }
         }

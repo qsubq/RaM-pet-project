@@ -8,13 +8,12 @@
     android:id="@+id/SwipeRefreshLayout">
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_characters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/character_item_layout"/>
-
+        tools:listitem="@layout/character_item_layout"
+        tools:itemCount="2"/>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

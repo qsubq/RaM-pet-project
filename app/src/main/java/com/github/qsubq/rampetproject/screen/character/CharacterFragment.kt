@@ -11,6 +11,7 @@ import com.github.qsubq.rampetproject.APP
 import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
 import com.github.qsubq.rampetproject.model.characterModel.CharacterModelItem
+import com.google.android.material.snackbar.Snackbar
 
 
 class CharacterFragment : Fragment() {
@@ -46,7 +47,11 @@ class CharacterFragment : Fragment() {
                 viewModel.getRandomCharacters()
             }
             else{
-                binding.rvCharacters.visibility = View.GONE
+                view?.let { Snackbar.make(it,"Connection error",5000)
+                    .setAction("Try again") {
+                        getCharacter()
+                    }
+                    .show()}
             }
         }
 
