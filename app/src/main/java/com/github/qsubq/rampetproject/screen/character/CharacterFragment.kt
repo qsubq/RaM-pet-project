@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.APP
@@ -18,6 +19,9 @@ class CharacterFragment : Fragment() {
     private lateinit var binding : FragmentCharacterBinding
     private lateinit var recyclerVIew : RecyclerView
     private lateinit var adapter : CharacterAdapter
+    private val viewModel by lazy {
+        ViewModelProvider(this).get(CharacterViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,19 +34,27 @@ class CharacterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
-        getCharacter()
+        if (viewModel.characterList.value == null){
+            getCharacter()
+        }
     }
 
     private fun init() {
         recyclerVIew = binding.rvCharacters
         adapter = CharacterAdapter()
         recyclerVIew.adapter = adapter
+
+        viewModel.characterList.observe(viewLifecycleOwner){list ->
+            list.body()?. let {adapter.setList(it)}
+        }
+
+        binding.SwipeRefreshLayout.setOnRefreshListener {
+            getCharacter()
+            binding.SwipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun getCharacter(){
-        val viewModel = ViewModelProvider(this).get(CharacterViewModel::class.java)
-
-        if (viewModel.characterList.value == null){
             if(viewModel.isOnline()){
                 viewModel.getRandomCharacters()
             }
@@ -53,16 +65,7 @@ class CharacterFragment : Fragment() {
                     }
                     .show()}
             }
-        }
 
-        viewModel.characterList.observe(viewLifecycleOwner){list ->
-            list.body()?. let {adapter.setList(it)}
-        }
-
-        binding.SwipeRefreshLayout.setOnRefreshListener {
-            viewModel.getRandomCharacters()
-            binding.SwipeRefreshLayout.isRefreshing = false
-        }
     }
 
     companion object{
