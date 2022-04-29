@@ -1,13 +1,15 @@
 package com.github.qsubq.rampetproject.screen.character
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.CharacterItemLayoutBinding
 import com.github.qsubq.rampetproject.model.characterModel.CharacterModelItem
 import com.squareup.picasso.Picasso
 
-class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
+class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>(){
     class CharacterViewHolder(val binding : CharacterItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
 
@@ -22,6 +24,14 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
         holder.binding.apply {
             tvItemName.text = listCharacter[position].name
             Picasso.get().load(listCharacter[position].image).into(imgItemCharacter)
+
+            tvItemStatus.text = listCharacter[position].status
+
+            when(listCharacter[position].status){
+                "Dead" -> tvItemStatus.setTextColor(Color.RED)
+                "Alive" -> tvItemStatus.setTextColor(Color.GREEN)
+                else -> tvItemStatus.setTextColor(Color.GRAY)
+            }
         }
     }
 

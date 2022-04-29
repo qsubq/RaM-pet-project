@@ -17,8 +17,9 @@ class EpisodesAdapter : RecyclerView.Adapter<EpisodesAdapter.EpisodesViewHolder>
     }
 
     override fun onBindViewHolder(holder: EpisodesViewHolder, position: Int) {
-        (holder.binding).apply {
+        holder.binding.apply {
             tvEpisodeItemName.text = episodesList[position].name
+            tvEpisodeItemDate.text = episodesList[position].air_date
         }
     }
 
