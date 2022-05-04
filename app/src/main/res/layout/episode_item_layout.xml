@@ -20,14 +20,14 @@
             android:id="@+id/tv_episode_item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title"
+            android:text="Title"
             android:textColor="@color/grey"
             android:textSize="28sp" />
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_episode_item_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/date"
+            android:text="Date"
             android:textSize="20sp"
             android:layout_marginTop="18dp"/>
     </LinearLayout>
