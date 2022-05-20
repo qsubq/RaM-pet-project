@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.github.qsubq.rampetproject.APP
 import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
@@ -15,36 +16,36 @@ import com.google.android.material.snackbar.Snackbar
 
 
 class CharacterFragment : Fragment() {
-    private lateinit var binding : FragmentCharacterBinding
-    private lateinit var recyclerVIew : RecyclerView
-    private lateinit var adapter : CharacterAdapter
-    private val viewModel by lazy {
-        ViewModelProvider(this).get(CharacterViewModel::class.java)
+    private lateinit var binding: FragmentCharacterBinding
+    private val viewModel: CharacterViewModel by viewModels()
+    private val navController : NavController by lazy {
+        NavHostFragment.findNavController(this)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCharacterBinding.inflate(layoutInflater,container , false)
+        binding = FragmentCharacterBinding.inflate(layoutInflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
-        if (viewModel.characterList.value == null){
+        if (viewModel.characterList.value == null) {
             getCharacter()
         }
     }
 
     private fun init() {
-        recyclerVIew = binding.rvCharacters
-        adapter = CharacterAdapter()
+        val recyclerVIew = binding.rvCharacters
+        val adapter = CharacterAdapter()
         recyclerVIew.adapter = adapter
 
-        viewModel.characterList.observe(viewLifecycleOwner){list ->
-            list.body()?. let {adapter.setList(it)}
+        viewModel.characterList.observe(viewLifecycleOwner) { list ->
+            list.body()?.let { adapter.setList(it) }
         }
 
         binding.SwipeRefreshLayout.setOnRefreshListener {
@@ -53,24 +54,25 @@ class CharacterFragment : Fragment() {
         }
     }
 
-    private fun getCharacter(){
-            if(viewModel.isOnline()){
-                viewModel.getRandomCharacters()
-            }
-            else{
-                view?.let { Snackbar.make(it,"Connection error",5000)
+    private fun getCharacter() {
+        if (viewModel.isOnline()) {
+            viewModel.getRandomCharacters()
+        } else {
+            view?.let {
+                Snackbar.make(it, "Connection error", 5000)
                     .setAction("Try again") {
                         getCharacter()
                     }
-                    .show()}
+                    .show()
             }
+        }
 
     }
 
-    companion object{
-        fun onClickItem(characterModelItem: CharacterModelItem){
+    companion object {
+        fun onClickItem(characterModelItem: CharacterModelItem) {
             val bundle = Bundle()
-            bundle.putParcelable("character",characterModelItem)
+            bundle.putParcelable("character", characterModelItem)
             APP.navController.navigate(R.id.action_characterFragment_to_detailFragment, bundle)
         }
     }

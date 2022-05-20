@@ -12,8 +12,10 @@ import com.squareup.picasso.Picasso
 
 
 class DetailFragment : Fragment() {
-    private lateinit var binding : FragmentDetailBinding
-    private lateinit var currentItem : CharacterModelItem
+    private lateinit var binding: FragmentDetailBinding
+    private val currentItem by lazy(LazyThreadSafetyMode.NONE) {
+        arguments?.getParcelable<CharacterModelItem>("character") as CharacterModelItem
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,11 +28,10 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        currentItem = arguments?.getParcelable<CharacterModelItem>("character") as CharacterModelItem
         init()
     }
 
-    private fun init(){
+    private fun init() {
         Picasso.get().load(currentItem.image).into(binding.imgCharacter)
         binding.tvName.text = currentItem.name
         binding.tvOrigin.text = currentItem.origin.name
@@ -41,12 +42,11 @@ class DetailFragment : Fragment() {
 
         if (currentItem.type == "" || currentItem.type == " ") {
             binding.tvType.text = getString(R.string.unknown_type)
-        }
-        else {
+        } else {
             binding.tvType.text = currentItem.type
         }
 
-        when(currentItem.status){
+        when (currentItem.status) {
             "Dead" -> binding.imgStatus.setImageResource(R.drawable.ic_dead_status_image)
             "Alive" -> binding.imgStatus.setImageResource(R.drawable.ic_alive_status_image)
             else -> binding.imgStatus.setImageResource(R.drawable.ic_unknown_status_image)
