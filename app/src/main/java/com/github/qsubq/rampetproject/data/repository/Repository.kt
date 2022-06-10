@@ -4,6 +4,7 @@ import com.github.qsubq.rampetproject.data.retrofit.RetrofitInstance
 import com.github.qsubq.rampetproject.model.characterModel.CharacterModel
 import com.github.qsubq.rampetproject.model.episodeModel.EpisodesModel
 import retrofit2.Response
+import javax.inject.Inject
 
 class Repository {
 

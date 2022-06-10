@@ -9,8 +9,10 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.github.qsubq.rampetproject.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     lateinit var navController: NavController

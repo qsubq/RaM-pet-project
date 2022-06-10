@@ -13,14 +13,12 @@ import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
 import com.github.qsubq.rampetproject.model.characterModel.CharacterModelItem
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CharacterFragment : Fragment() {
     private lateinit var binding: FragmentCharacterBinding
     private val viewModel: CharacterViewModel by viewModels()
-    private val navController : NavController by lazy {
-        NavHostFragment.findNavController(this)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

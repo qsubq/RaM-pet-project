@@ -1,30 +1,30 @@
 package com.github.qsubq.rampetproject.screen.episodes
 
-import android.app.Application
-import androidx.lifecycle.*
-import androidx.paging.InvalidatingPagingSourceFactory
-import com.github.qsubq.rampetproject.data.ConnectionHelper
-import com.github.qsubq.rampetproject.data.EpisodesPageSource
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.github.qsubq.rampetproject.data.InternetConnection
 import com.github.qsubq.rampetproject.data.repository.Repository
 import com.github.qsubq.rampetproject.model.episodeModel.EpisodesModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import java.security.Provider
+import javax.inject.Inject
 
-class EpisodesViewModel(
-    application: Application
-) : AndroidViewModel(application) {
-    val context = application
-    private val repo = Repository()
-    var episodesList : MutableLiveData<Response<EpisodesModel>> = MutableLiveData()
+@HiltViewModel
+class EpisodesViewModel @Inject constructor(
+    private val repository: Repository,
+    private val connectionHelper: InternetConnection
+) : ViewModel() {
+    var episodesList: MutableLiveData<Response<EpisodesModel>> = MutableLiveData()
 
-    fun getAllEpisodes(){
+    fun getAllEpisodes() {
         viewModelScope.launch {
-            episodesList.value = repo.getAllEpisodes()
+            episodesList.value = repository.getAllEpisodes()
         }
     }
 
-    fun isOnline() : Boolean {
-        return ConnectionHelper.isOnline(context)
+    fun isOnline(): Boolean {
+        return connectionHelper.isNetworkConnected()
     }
 }

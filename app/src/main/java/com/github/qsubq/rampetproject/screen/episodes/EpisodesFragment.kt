@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.databinding.FragmentEpisodesBinding
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EpisodesFragment : Fragment() {
     private lateinit var binding: FragmentEpisodesBinding
     private val adapter by lazy(LazyThreadSafetyMode.NONE) {
@@ -38,7 +40,6 @@ class EpisodesFragment : Fragment() {
     }
 
     private fun getEpisodes() {
-
 
         if (viewModel.episodesList.value == null) {
             if (viewModel.isOnline()) {
