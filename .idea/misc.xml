@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.131" />
         <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/drawable/ic_connection_back.xml" value="0.1875" />
         <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/drawable/ic_dead_circle_background.xml" value="0.136" />
         <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
@@ -15,6 +16,7 @@
         <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/layout/fragment_detail.xml" value="0.18" />
         <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/layout/fragment_episodes.xml" value="0.12552083333333333" />
         <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/layout/fragment_exception.xml" value="0.1" />
+        <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/layout/fragment_search.xml" value="0.25" />
         <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/layout/fragment_splash.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/layout/nav_header.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Zzz/AndroidStudioProjects/RaMpetproject/app/src/main/res/menu/nav_drawer_menu.xml" value="0.27291666666666664" />

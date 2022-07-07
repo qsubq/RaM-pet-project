@@ -9,4 +9,6 @@
     <string name="random_character">Random Character</string>
     <string name="episodes">Episodes</string>
     <string name="tv_try_again">Try again</string>
+    <string name="characters">Characters</string>
+    <string name="search_character">Search Character</string>
 </resources>

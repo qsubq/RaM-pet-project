@@ -2,6 +2,7 @@ package com.github.qsubq.rampetproject.di
 
 import android.content.Context
 import com.github.qsubq.rampetproject.data.InternetConnection
+import com.github.qsubq.rampetproject.data.api.ApiService
 import com.github.qsubq.rampetproject.data.repository.Repository
 import dagger.Module
 import dagger.Provides
@@ -16,8 +17,8 @@ class DataModule {
 
     @ViewModelScoped
     @Provides
-    fun provideRepository(): Repository {
-        return Repository()
+    fun provideRepository(api: ApiService): Repository {
+        return Repository(api)
     }
 
     @ViewModelScoped

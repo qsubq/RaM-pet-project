@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/characterFragment"
         android:name="com.github.qsubq.rampetproject.screen.character.CharacterFragment"
-        android:label="Random character"
+        android:label="Random"
         tools:layout="@layout/fragment_character" >
         <action
             android:id="@+id/action_characterFragment_to_detailFragment"
@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_characterFragment_to_episodesFragment"
             app:destination="@id/episodesFragment" />
+        <action
+            android:id="@+id/action_characterFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -33,6 +36,15 @@
         tools:layout="@layout/fragment_episodes" >
         <action
             android:id="@+id/action_episodesFragment_to_characterFragment"
+            app:destination="@id/characterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.github.qsubq.rampetproject.screen.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_characterFragment"
             app:destination="@id/characterFragment" />
     </fragment>
 </navigation>

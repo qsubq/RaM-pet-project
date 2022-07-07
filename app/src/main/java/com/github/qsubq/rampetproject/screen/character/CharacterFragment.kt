@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
 import com.github.qsubq.rampetproject.APP
 import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding

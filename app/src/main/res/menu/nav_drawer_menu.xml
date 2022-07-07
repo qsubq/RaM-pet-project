@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Characters">
+    <item android:title="@string/characters">
         <menu>
             <group
                 android:checkableBehavior="single">
                 <item
                     android:id="@+id/characterFragment"
                     android:title="@string/random_character" />
+                <item
+                    android:id="@+id/searchFragment"
+                    android:title="@string/search_character" />
             </group>
         </menu>
     </item>
 
-    <item android:title="Episodes">
+    <item android:title="@string/episodes">
         <menu>
             <group
                 android:checkableBehavior="single">
@@ -22,10 +25,5 @@
             </group>
         </menu>
     </item>
-
-
-
-
-
 
 </menu>
