@@ -6,10 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.github.qsubq.rampetproject.APP
-import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
-import com.github.qsubq.rampetproject.model.characterModel.CharacterModelItem
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,7 +17,7 @@ class CharacterFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentCharacterBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -64,14 +61,4 @@ class CharacterFragment : Fragment() {
         }
 
     }
-
-    companion object {
-        fun onClickItem(characterModelItem: CharacterModelItem) {
-            val bundle = Bundle()
-            bundle.putParcelable("character", characterModelItem)
-            APP.navController.navigate(R.id.action_characterFragment_to_detailFragment, bundle)
-        }
-    }
-
-
 }

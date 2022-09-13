@@ -1,12 +1,17 @@
 package com.github.qsubq.rampetproject.screen.character
 
 import android.graphics.Color
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
+import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.CharacterItemLayoutBinding
 import com.github.qsubq.rampetproject.model.characterModel.CharacterModelItem
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.internal.managers.FragmentComponentManager
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
     class CharacterViewHolder(val binding: CharacterItemLayoutBinding) :
@@ -48,7 +53,15 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
     override fun onViewAttachedToWindow(holder: CharacterViewHolder) {
         super.onViewAttachedToWindow(holder)
         holder.itemView.setOnClickListener {
-            CharacterFragment.onClickItem(listCharacter[holder.adapterPosition])
+            val bundle = Bundle()
+            bundle.putParcelable("character", listCharacter[holder.adapterPosition])
+
+
+            val context = FragmentComponentManager.findActivity(it.context) as AppCompatActivity
+            val navHostFragment =
+                context.supportFragmentManager.findFragmentById(R.id.nav_fragment) as NavHostFragment
+            navHostFragment.navController.navigate(R.id.action_characterFragment_to_detailFragment,
+                bundle)
         }
     }
 }
