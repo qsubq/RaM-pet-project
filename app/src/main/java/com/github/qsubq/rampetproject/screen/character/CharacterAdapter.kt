@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.CharacterItemLayoutBinding
@@ -56,11 +59,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
             val bundle = Bundle()
             bundle.putParcelable("character", listCharacter[holder.adapterPosition])
 
-
-            val context = FragmentComponentManager.findActivity(it.context) as AppCompatActivity
-            val navHostFragment =
-                context.supportFragmentManager.findFragmentById(R.id.nav_fragment) as NavHostFragment
-            navHostFragment.navController.navigate(R.id.action_characterFragment_to_detailFragment,
+            findNavController(holder.itemView).navigate(R.id.action_characterFragment_to_detailFragment,
                 bundle)
         }
     }
