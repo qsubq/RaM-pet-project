@@ -1,9 +1,9 @@
 package com.github.qsubq.rampetproject.data.repository
 
 import com.github.qsubq.rampetproject.data.api.ApiService
-import com.github.qsubq.rampetproject.model.characterModel.CharacterModel
-import com.github.qsubq.rampetproject.model.episodeModel.EpisodesModel
-import com.github.qsubq.rampetproject.model.searchModel.SearchModel
+import com.github.qsubq.rampetproject.data.model.characterModel.CharacterModel
+import com.github.qsubq.rampetproject.data.model.episodeModel.EpisodesModel
+import com.github.qsubq.rampetproject.data.model.searchModel.SearchModel
 import retrofit2.Response
 
 class Repository(private val api: ApiService) {
