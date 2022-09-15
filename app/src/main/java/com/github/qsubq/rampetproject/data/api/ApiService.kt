@@ -3,6 +3,7 @@ package com.github.qsubq.rampetproject.data.api
 import androidx.annotation.IntRange
 import com.github.qsubq.rampetproject.model.characterModel.CharacterModel
 import com.github.qsubq.rampetproject.model.episodeModel.EpisodesModel
+import com.github.qsubq.rampetproject.model.searchModel.SearchModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -20,8 +21,10 @@ interface ApiService {
     ) : Response<EpisodesModel>
 
 
-    companion object {
+    @GET("character/")
+    suspend fun getCharacter(@Query("name") nameCharacter : String):Response<SearchModel>
 
+    companion object {
         const val DEFAULT_PAGE_SIZE = 20
         const val MAX_PAGE_SIZE = 20
     }

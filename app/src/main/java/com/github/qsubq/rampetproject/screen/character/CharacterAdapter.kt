@@ -4,17 +4,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.R
 import com.github.qsubq.rampetproject.databinding.CharacterItemLayoutBinding
 import com.github.qsubq.rampetproject.model.characterModel.CharacterModelItem
 import com.squareup.picasso.Picasso
-import dagger.hilt.android.internal.managers.FragmentComponentManager
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
     class CharacterViewHolder(val binding: CharacterItemLayoutBinding) :
@@ -58,9 +53,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("character", listCharacter[holder.adapterPosition])
-
-            findNavController(holder.itemView).navigate(R.id.action_characterFragment_to_detailFragment,
-                bundle)
+            findNavController(holder.itemView).navigate(R.id.action_characterFragment_to_detailFragment, bundle)
         }
     }
 }
