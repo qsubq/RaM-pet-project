@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.R
-import com.github.qsubq.rampetproject.databinding.CharacterItemLayoutBinding
 import com.github.qsubq.rampetproject.data.model.characterModel.CharacterModelItem
+import com.github.qsubq.rampetproject.databinding.CharacterItemLayoutBinding
 import com.squareup.picasso.Picasso
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
@@ -53,7 +53,8 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("character", listCharacter[holder.adapterPosition])
-            findNavController(holder.itemView).navigate(R.id.action_characterFragment_to_detailFragment, bundle)
+            findNavController(holder.itemView).navigate(R.id.action_characterFragment_to_detailFragment,
+                bundle)
         }
     }
 }

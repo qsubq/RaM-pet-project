@@ -1,18 +1,21 @@
 package com.github.qsubq.rampetproject.app.presentation.screen.search
 
 import android.graphics.Color
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.github.qsubq.rampetproject.R
+import com.github.qsubq.rampetproject.data.model.characterModel.CharacterModelItem
 import com.github.qsubq.rampetproject.databinding.CharacterItemLayoutBinding
-import com.github.qsubq.rampetproject.data.model.searchModel.Result
 import com.squareup.picasso.Picasso
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     class SearchViewHolder(val binding: CharacterItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    private var characterList = emptyList<Result>()
+    private var characterList = emptyList<CharacterModelItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val itemBinding =
@@ -39,8 +42,18 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
         return characterList.size
     }
 
-    fun setList(list: List<Result>) {
+    fun setList(list: List<CharacterModelItem>) {
         characterList = list
         notifyDataSetChanged()
+    }
+
+    override fun onViewAttachedToWindow(holder: SearchViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        holder.itemView.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putParcelable("character", characterList[holder.adapterPosition])
+            Navigation.findNavController(holder.itemView)
+                .navigate(R.id.action_searchFragment_to_detailFragment, bundle)
+        }
     }
 }

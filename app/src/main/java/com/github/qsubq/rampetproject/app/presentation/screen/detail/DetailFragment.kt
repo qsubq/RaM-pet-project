@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.github.qsubq.rampetproject.R
-import com.github.qsubq.rampetproject.databinding.FragmentDetailBinding
 import com.github.qsubq.rampetproject.data.model.characterModel.CharacterModelItem
+import com.github.qsubq.rampetproject.databinding.FragmentDetailBinding
 import com.squareup.picasso.Picasso
 
 
@@ -19,7 +19,7 @@ class DetailFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -37,7 +37,6 @@ class DetailFragment : Fragment() {
         binding.tvOrigin.text = currentItem.origin.name
         binding.tvSpecies.text = currentItem.species
         binding.tvStatus.text = currentItem.status
-
         binding.tvId.text = currentItem.id.toString()
 
         if (currentItem.type == "" || currentItem.type == " ") {
@@ -52,5 +51,4 @@ class DetailFragment : Fragment() {
             else -> binding.imgStatus.setImageResource(R.drawable.ic_unknown_status_image)
         }
     }
-
 }
