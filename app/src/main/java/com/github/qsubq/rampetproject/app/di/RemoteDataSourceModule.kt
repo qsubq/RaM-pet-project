@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+class RemoteDataSourceModule {
     private val BASE_URL = "https://rickandmortyapi.com/api/"
 
     @Singleton

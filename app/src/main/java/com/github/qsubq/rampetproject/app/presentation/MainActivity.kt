@@ -16,12 +16,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val appBarConfig by lazy{
+        AppBarConfiguration(navController.graph, drawer_layout)
+    }
     private val navController by lazy {
         supportFragmentManager.findFragmentById(R.id.nav_fragment)
             ?.findNavController() as NavController
     }
 
-    private lateinit var appBarConfig: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setupWithNavController(navController)
 
         setSupportActionBar(toolbar)
-        appBarConfig = AppBarConfiguration(navController.graph, drawer_layout)
         setupActionBarWithNavController(navController, appBarConfig)
 
     }

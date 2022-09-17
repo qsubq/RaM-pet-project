@@ -4,11 +4,12 @@ import com.github.qsubq.rampetproject.data.api.ApiService
 import com.github.qsubq.rampetproject.data.model.characterModel.CharacterModel
 import com.github.qsubq.rampetproject.data.model.episodeModel.EpisodesModel
 import com.github.qsubq.rampetproject.data.model.searchModel.SearchModel
+import com.github.qsubq.rampetproject.domain.repository.RemoteRepository
 import retrofit2.Response
 
-class Repository(private val api: ApiService) {
+class RemoteRepositoryImpl(private val api: ApiService) : RemoteRepository {
 
-    suspend fun getRandomCharacters(): Response<CharacterModel> {
+    override suspend fun getRandomCharacter(): Response<CharacterModel> {
         val randomList = mutableListOf<Int>()
         for (i in 0..20) {
             randomList.add((1..826).random())
@@ -16,11 +17,11 @@ class Repository(private val api: ApiService) {
         return api.getRandomCharacters(randomList.toString())
     }
 
-    suspend fun getAllEpisodes(page:Int): Response<EpisodesModel> {
+    override suspend fun getAllEpisodes(page: Int): Response<EpisodesModel> {
         return api.getAllEpisode(page)
     }
 
-    suspend fun getCharacter(nameCharacter: String): Response<SearchModel>{
+    override suspend fun getCharacterFromSearch(nameCharacter: String): Response<SearchModel> {
         return api.getCharacter(nameCharacter)
     }
 }

@@ -2,10 +2,11 @@ package com.github.qsubq.rampetproject.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.github.qsubq.rampetproject.data.api.ApiService
 import com.github.qsubq.rampetproject.data.model.episodeModel.Result
+import com.github.qsubq.rampetproject.domain.useCase.GetAllEpisodesUseCase
 
-class EpisodesPagingSource(private val apiService: ApiService) : PagingSource<Int, Result>() {
+class EpisodesPagingSource(private val useCase: GetAllEpisodesUseCase) :
+    PagingSource<Int, Result>() {
     override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
         return null
     }
@@ -13,7 +14,7 @@ class EpisodesPagingSource(private val apiService: ApiService) : PagingSource<In
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
         return try {
             val currentPage = params.key ?: 1
-            val response = apiService.getAllEpisode(currentPage)
+            val response = useCase.execute(currentPage)
             val data = response.body()?.results ?: emptyList()
             val responseData = mutableListOf<Result>()
             responseData.addAll(data)

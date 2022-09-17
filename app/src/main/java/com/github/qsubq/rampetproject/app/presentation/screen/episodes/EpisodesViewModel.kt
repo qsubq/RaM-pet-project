@@ -5,25 +5,18 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.github.qsubq.rampetproject.data.InternetConnection
-import com.github.qsubq.rampetproject.data.api.ApiService
 import com.github.qsubq.rampetproject.data.paging.EpisodesPagingSource
-import com.github.qsubq.rampetproject.data.repository.Repository
+import com.github.qsubq.rampetproject.domain.useCase.GetAllEpisodesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class EpisodesViewModel @Inject constructor(
-    private val apiService: ApiService,
-    private val connectionHelper: InternetConnection,
+    private val useCase: GetAllEpisodesUseCase,
 ) : ViewModel() {
 
     val listData = Pager(PagingConfig(pageSize = 1)) {
-        EpisodesPagingSource(apiService)
+        EpisodesPagingSource(useCase)
     }.flow.cachedIn(viewModelScope)
 
-
-    fun isOnline(): Boolean {
-        return connectionHelper.isNetworkConnected()
-    }
 }

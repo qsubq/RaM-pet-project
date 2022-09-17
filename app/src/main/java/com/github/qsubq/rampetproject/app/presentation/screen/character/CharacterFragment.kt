@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +27,7 @@ class CharacterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         init()
         if (viewModel.characterList.value == null) {
-            getCharacter()
+            getRandomCharacter()
         }
     }
 
@@ -42,23 +41,20 @@ class CharacterFragment : Fragment() {
         }
 
         binding.SwipeRefreshLayout.setOnRefreshListener {
-            getCharacter()
+            getRandomCharacter()
             binding.SwipeRefreshLayout.isRefreshing = false
         }
     }
 
-    private fun getCharacter() {
-        if (viewModel.isOnline()) {
-            viewModel.getRandomCharacters()
-        } else {
-            view?.let {
-                Snackbar.make(it, "Connection error", 5000)
-                    .setAction("Try again") {
-                        getCharacter()
-                    }
-                    .show()
-            }
-        }
+    private fun getRandomCharacter() {
+        viewModel.getRandomCharacters()
 
+//        view?.let {
+//            Snackbar.make(it, "Connection error", 5000)
+//                .setAction("Try again") {
+//                    getCharacter()
+//                }
+//                .show()
+//        }
     }
 }
