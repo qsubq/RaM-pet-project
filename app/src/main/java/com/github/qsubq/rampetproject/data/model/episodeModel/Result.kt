@@ -5,7 +5,7 @@ data class Result(
     val characters: List<String>,
     val created: String,
     val episode: String,
-    val id: Int,
+    var id: Int,
     val name: String,
     val url: String
 )

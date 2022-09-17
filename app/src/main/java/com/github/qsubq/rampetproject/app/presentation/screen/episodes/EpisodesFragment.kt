@@ -6,16 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.databinding.FragmentEpisodesBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class EpisodesFragment : Fragment() {
     private lateinit var binding: FragmentEpisodesBinding
     private val adapter by lazy(LazyThreadSafetyMode.NONE) {
-        EpisodesAdapter()
+        EpisodesPageAdapter()
     }
     private val viewModel: EpisodesViewModel by viewModels()
 
@@ -31,7 +35,7 @@ class EpisodesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
-        getEpisodes()
+        loadingData()
     }
 
     private fun init() {
@@ -39,27 +43,11 @@ class EpisodesFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
-    private fun getEpisodes() {
-
-        if (viewModel.episodesList.value == null) {
-            if (viewModel.isOnline()) {
-                viewModel.getAllEpisodes()
-            } else {
-                view?.let {
-                    Snackbar.make(it, "Connection error", 5000)
-                        .setAction("Try again") {
-                            getEpisodes()
-                        }
-                        .show()
-                }
-
+    private fun loadingData(){
+        lifecycleScope.launch{
+            viewModel.listData.collect{pagingData ->
+                adapter.submitData(pagingData)
             }
         }
-
-        viewModel.episodesList.observe(viewLifecycleOwner) { list ->
-            list.body()?.let { adapter.setList(it.results) }
-
-        }
-
     }
 }
