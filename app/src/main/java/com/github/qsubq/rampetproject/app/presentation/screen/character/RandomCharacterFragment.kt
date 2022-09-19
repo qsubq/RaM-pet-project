@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CharacterFragment : Fragment() {
+class RandomCharacterFragment : Fragment() {
     private lateinit var binding: FragmentCharacterBinding
-    private val viewModel: CharacterViewModel by viewModels()
+    private val viewModel: RandomCharacterViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,35 +27,27 @@ class CharacterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
+
         if (viewModel.characterList.value == null) {
-            getRandomCharacter()
+            viewModel.getRandomCharacters()
         }
     }
 
     private fun init() {
         val recyclerVIew = binding.rvCharacters
-        val adapter = CharacterAdapter()
+        val adapter = RandomCharacterAdapter()
         recyclerVIew.adapter = adapter
 
-        viewModel.characterList.observe(viewLifecycleOwner) { list ->
-            list.body()?.let { adapter.setList(it) }
-        }
-
         binding.SwipeRefreshLayout.setOnRefreshListener {
-            getRandomCharacter()
+            viewModel.getRandomCharacters()
             binding.SwipeRefreshLayout.isRefreshing = false
         }
-    }
 
-    private fun getRandomCharacter() {
-        viewModel.getRandomCharacters()
-
-//        view?.let {
-//            Snackbar.make(it, "Connection error", 5000)
-//                .setAction("Try again") {
-//                    getCharacter()
-//                }
-//                .show()
-//        }
+        viewModel.characterList.observe(viewLifecycleOwner) { list ->
+            adapter.setList(list)
+        }
+        viewModel.errorLiveData.observe(viewLifecycleOwner){error->
+            view?.let { Snackbar.make(it,  error,Snackbar.LENGTH_LONG).show() }
+        }
     }
 }

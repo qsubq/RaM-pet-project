@@ -1,5 +1,6 @@
 package com.github.qsubq.rampetproject.app.presentation.screen.character
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +12,7 @@ import com.github.qsubq.rampetproject.data.model.characterModel.CharacterModelIt
 import com.github.qsubq.rampetproject.databinding.CharacterItemLayoutBinding
 import com.squareup.picasso.Picasso
 
-class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
+class RandomCharacterAdapter : RecyclerView.Adapter<RandomCharacterAdapter.CharacterViewHolder>() {
     class CharacterViewHolder(val binding: CharacterItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -43,6 +44,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
         return listCharacter.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setList(list: List<CharacterModelItem>) {
         listCharacter = list
         notifyDataSetChanged()
@@ -52,7 +54,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
         super.onViewAttachedToWindow(holder)
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
-            bundle.putParcelable("character", listCharacter[holder.adapterPosition])
+            bundle.putParcelable("character", listCharacter[holder.bindingAdapterPosition])
             findNavController(holder.itemView).navigate(R.id.action_characterFragment_to_detailFragment,
                 bundle)
         }

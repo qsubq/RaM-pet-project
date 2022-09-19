@@ -10,12 +10,12 @@ import retrofit2.Response
 
 class RemoteRepositoryImpl(private val api: ApiService) : RemoteRepository {
 
-    override suspend fun getRandomCharacter(): Response<CharacterModel> {
+    override suspend fun getRandomCharacter(): NetworkResult<CharacterModel> {
         val randomList = mutableListOf<Int>()
         for (i in 0..20) {
             randomList.add((1..826).random())
         }
-        return api.getRandomCharacters(randomList.toString())
+        return handleApi {api.getRandomCharacters(randomList.toString())}
     }
 
     override suspend fun getAllEpisodes(page: Int): Response<EpisodesModel> {

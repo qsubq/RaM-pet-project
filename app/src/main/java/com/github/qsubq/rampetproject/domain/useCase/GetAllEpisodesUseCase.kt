@@ -5,7 +5,5 @@ import com.github.qsubq.rampetproject.domain.repository.RemoteRepository
 import retrofit2.Response
 
 class GetAllEpisodesUseCase(private val repo: RemoteRepository) {
-    suspend fun execute(page: Int): Response<EpisodesModel> {
-        return repo.getAllEpisodes(page)
+    suspend fun execute(page: Int) = repo.getAllEpisodes(page)
     }
-}
