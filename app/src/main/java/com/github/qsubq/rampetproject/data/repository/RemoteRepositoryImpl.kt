@@ -5,6 +5,7 @@ import com.github.qsubq.rampetproject.data.model.characterModel.CharacterModel
 import com.github.qsubq.rampetproject.data.model.episodeModel.EpisodesModel
 import com.github.qsubq.rampetproject.data.model.searchModel.SearchModel
 import com.github.qsubq.rampetproject.domain.repository.RemoteRepository
+import retrofit2.HttpException
 import retrofit2.Response
 
 class RemoteRepositoryImpl(private val api: ApiService) : RemoteRepository {
@@ -21,7 +22,31 @@ class RemoteRepositoryImpl(private val api: ApiService) : RemoteRepository {
         return api.getAllEpisode(page)
     }
 
-    override suspend fun getCharacterFromSearch(nameCharacter: String): Response<SearchModel> {
-        return api.getCharacter(nameCharacter)
+    override suspend fun getCharacterFromSearch(nameCharacter: String): NetworkResult<SearchModel> {
+        return handleApi{ api.getCharacter(nameCharacter) }
+    }
+
+    private suspend fun <T : Any> handleApi(
+        execute: suspend () -> Response<T>,
+    ): NetworkResult<T> {
+        return try {
+            val response = execute()
+            val body = response.body()
+            if (response.isSuccessful && body != null) {
+                NetworkResult.Success(body)
+            } else {
+                NetworkResult.Error(code = response.code(), message = response.message())
+            }
+        } catch (e: HttpException) {
+            NetworkResult.Error(code = e.code(), message = e.message())
+        } catch (e: Throwable) {
+            NetworkResult.Exception(e)
+        }
+    }
+
+    sealed class NetworkResult<T : Any> {
+        class Success<T : Any>(val data: T) : NetworkResult<T>()
+        class Error<T : Any>(val code: Int, val message: String?) : NetworkResult<T>()
+        class Exception<T : Any>(val e: Throwable) : NetworkResult<T>()
     }
 }

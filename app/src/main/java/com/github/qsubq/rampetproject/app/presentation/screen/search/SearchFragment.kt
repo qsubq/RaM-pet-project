@@ -39,8 +39,9 @@ class SearchFragment : Fragment() {
         binding.rcView.adapter = adapter
 
         viewModel.characterLiveData.observe(viewLifecycleOwner) { list ->
-            list.body()?.let { adapter.setList(it.results) }
+            adapter.setList(list)
         }
+
         viewModel.errorLiveData.observe(viewLifecycleOwner) { error ->
             view?.let {
                 Snackbar.make(it, error, 5000).show()
