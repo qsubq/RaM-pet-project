@@ -24,7 +24,6 @@ class EpisodesPageAdapter : PagingDataAdapter<Result, MyViewHolder>(diffCallBack
             override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
                 return oldItem == newItem
             }
-
         }
     }
 

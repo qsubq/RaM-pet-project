@@ -21,7 +21,6 @@ class RandomCharacterFragment : Fragment() {
     ): View {
         binding = FragmentCharacterBinding.inflate(layoutInflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

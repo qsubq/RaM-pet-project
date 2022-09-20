@@ -3,8 +3,10 @@
 
     <item android:title="@string/characters">
         <menu>
-            <group
-                android:checkableBehavior="single">
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/allCharacterFragment"
+                    android:title="@string/all_character" />
                 <item
                     android:id="@+id/characterFragment"
                     android:title="@string/random_character" />
@@ -17,8 +19,7 @@
 
     <item android:title="@string/episodes">
         <menu>
-            <group
-                android:checkableBehavior="single">
+            <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/episodesFragment"
                     android:title="@string/episodes" />

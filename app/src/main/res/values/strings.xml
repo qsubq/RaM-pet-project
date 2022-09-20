@@ -11,4 +11,6 @@
     <string name="tv_try_again">Try again</string>
     <string name="characters">Characters</string>
     <string name="search_character">Search Character</string>
+    <string name="nothing_was_found_for_your_query">Nothing was found for your query</string>
+    <string name="all_character">All Character</string>
 </resources>

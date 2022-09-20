@@ -10,4 +10,5 @@ interface RemoteRepository {
     suspend fun getRandomCharacter(): NetworkResult<CharacterModel>
     suspend fun getAllEpisodes(page: Int): Response<EpisodesModel>
     suspend fun getCharacterFromSearch(nameCharacter: String): NetworkResult<SearchModel>
+    suspend fun getAllCharacter(page: Int): Response<CharacterModel>
 }

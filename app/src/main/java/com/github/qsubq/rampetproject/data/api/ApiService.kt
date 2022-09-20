@@ -20,8 +20,6 @@ interface ApiService {
     @GET("character/")
     suspend fun getCharacter(@Query("name") nameCharacter: String): Response<SearchModel>
 
-    companion object {
-        const val DEFAULT_PAGE_SIZE = 20
-        const val MAX_PAGE_SIZE = 20
-    }
+    @GET("character/")
+    suspend fun getAllCharacter(@Query("page") page: Int): Response<CharacterModel>
 }

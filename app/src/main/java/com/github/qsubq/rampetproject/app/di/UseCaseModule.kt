@@ -1,6 +1,7 @@
 package com.github.qsubq.rampetproject.app.di
 
 import com.github.qsubq.rampetproject.domain.repository.RemoteRepository
+import com.github.qsubq.rampetproject.domain.useCase.GetAllCharacterUseCase
 import com.github.qsubq.rampetproject.domain.useCase.GetAllEpisodesUseCase
 import com.github.qsubq.rampetproject.domain.useCase.GetRandomCharacterUseCase
 import com.github.qsubq.rampetproject.domain.useCase.GetSearchCharacterUseCase
@@ -30,5 +31,11 @@ class UseCaseModule {
     @Provides
     fun provideGetSearchCharacterUseCase(repository: RemoteRepository): GetSearchCharacterUseCase {
         return GetSearchCharacterUseCase(repository)
+    }
+
+    @ViewModelScoped
+    @Provides
+    fun provideGetAllCharacterUseCase(repository: RemoteRepository): GetAllCharacterUseCase {
+        return GetAllCharacterUseCase(repository)
     }
 }

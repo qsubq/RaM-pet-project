@@ -15,15 +15,19 @@ class RemoteRepositoryImpl(private val api: ApiService) : RemoteRepository {
         for (i in 0..20) {
             randomList.add((1..826).random())
         }
-        return handleApi {api.getRandomCharacters(randomList.toString())}
+        return handleApi { api.getRandomCharacters(randomList.toString()) }
+    }
+
+    override suspend fun getCharacterFromSearch(nameCharacter: String): NetworkResult<SearchModel> {
+        return handleApi { api.getCharacter(nameCharacter) }
+    }
+
+    override suspend fun getAllCharacter(page: Int): Response<CharacterModel> {
+        return api.getAllCharacter(page)
     }
 
     override suspend fun getAllEpisodes(page: Int): Response<EpisodesModel> {
         return api.getAllEpisode(page)
-    }
-
-    override suspend fun getCharacterFromSearch(nameCharacter: String): NetworkResult<SearchModel> {
-        return handleApi{ api.getCharacter(nameCharacter) }
     }
 
     private suspend fun <T : Any> handleApi(
