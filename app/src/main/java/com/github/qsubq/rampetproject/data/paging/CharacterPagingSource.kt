@@ -2,25 +2,23 @@ package com.github.qsubq.rampetproject.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.github.qsubq.rampetproject.data.model.characterModel.CharacterModelItem
+import com.github.qsubq.rampetproject.data.model.allCharacterModel.Result
 import com.github.qsubq.rampetproject.domain.useCase.GetAllCharacterUseCase
 
 class CharacterPagingSource(private val useCase: GetAllCharacterUseCase) :
-    PagingSource<Int, CharacterModelItem>() {
-    override fun getRefreshKey(state: PagingState<Int, CharacterModelItem>): Int? {
+    PagingSource<Int, Result>() {
+    override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
         return null
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterModelItem> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
         return try {
             val currentPage = params.key ?: 1
             val response = useCase.execute(currentPage)
-            val data = response.body()
-            println("сюда дошёл")
-            val responseData = mutableListOf<CharacterModelItem>()
+            val data = response.body()?.results
+            val responseData = mutableListOf<Result>()
             if (data != null) {
                 responseData.addAll(data)
-                println("не ноль")
             }
 
             LoadResult.Page(

@@ -7,26 +7,26 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.app.presentation.screen.allCharacter.AllCharacterPageAdapter.MyViewHolder
-import com.github.qsubq.rampetproject.data.model.characterModel.CharacterModelItem
+import com.github.qsubq.rampetproject.data.model.allCharacterModel.Result
 import com.github.qsubq.rampetproject.databinding.CharacterItemLayoutBinding
 import com.squareup.picasso.Picasso
 
-class AllCharacterPageAdapter : PagingDataAdapter<CharacterModelItem, MyViewHolder>(diffCallBack) {
+class AllCharacterPageAdapter : PagingDataAdapter<Result, MyViewHolder>(diffCallBack) {
     inner class MyViewHolder(val binding: CharacterItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     companion object {
-        val diffCallBack = object : DiffUtil.ItemCallback<CharacterModelItem>() {
+        val diffCallBack = object : DiffUtil.ItemCallback<Result>() {
             override fun areItemsTheSame(
-                oldItem: CharacterModelItem,
-                newItem: CharacterModelItem,
+                oldItem: Result,
+                newItem: Result,
             ): Boolean {
                 return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(
-                oldItem: CharacterModelItem,
-                newItem: CharacterModelItem,
+                oldItem: Result,
+                newItem: Result,
             ): Boolean {
                 return oldItem == newItem
             }

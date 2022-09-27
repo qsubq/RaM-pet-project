@@ -1,6 +1,7 @@
 package com.github.qsubq.rampetproject.data.repository
 
 import com.github.qsubq.rampetproject.data.api.ApiService
+import com.github.qsubq.rampetproject.data.model.allCharacterModel.AllCharacterModel
 import com.github.qsubq.rampetproject.data.model.characterModel.CharacterModel
 import com.github.qsubq.rampetproject.data.model.episodeModel.EpisodesModel
 import com.github.qsubq.rampetproject.data.model.searchModel.SearchModel
@@ -22,7 +23,7 @@ class RemoteRepositoryImpl(private val api: ApiService) : RemoteRepository {
         return handleApi { api.getCharacter(nameCharacter) }
     }
 
-    override suspend fun getAllCharacter(page: Int): Response<CharacterModel> {
+    override suspend fun getAllCharacter(page: Int): Response<AllCharacterModel> {
         return api.getAllCharacter(page)
     }
 
