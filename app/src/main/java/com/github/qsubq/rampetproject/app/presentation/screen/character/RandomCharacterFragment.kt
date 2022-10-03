@@ -4,11 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.github.qsubq.rampetproject.data.repository.RemoteRepositoryImpl.NetworkResult
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RandomCharacterFragment : Fragment() {
@@ -27,7 +33,7 @@ class RandomCharacterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         init()
 
-        if (viewModel.characterList.value == null) {
+        if (binding.rvCharacters.isEmpty()) {
             viewModel.getRandomCharacters()
         }
     }
@@ -42,11 +48,20 @@ class RandomCharacterFragment : Fragment() {
             binding.SwipeRefreshLayout.isRefreshing = false
         }
 
-        viewModel.characterList.observe(viewLifecycleOwner) { list ->
-            adapter.setList(list)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.myUiState.collect { uiState ->
+                    when (uiState) {
+                        is NetworkResult.Success -> adapter.setList(uiState.data)
+                        is NetworkResult.Error -> showError(uiState.message)
+                        is NetworkResult.Exception -> showError(uiState.e.toString())
+                    }
+                }
+            }
         }
-        viewModel.errorLiveData.observe(viewLifecycleOwner){error->
-            view?.let { Snackbar.make(it,  error,Snackbar.LENGTH_LONG).show() }
-        }
+    }
+
+    private fun showError(message: String?) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 }
