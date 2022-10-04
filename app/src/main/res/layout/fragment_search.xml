@@ -29,7 +29,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:src="@drawable/ic_baseline_search_24" />
+                android:src="@drawable/ic_baseline_search_24"
+                android:layout_marginTop="8dp"/>
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextSearch"
@@ -52,16 +53,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchCardView"
         tools:listitem="@layout/character_item_layout" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:text="@string/nothing_was_found_for_your_query"
-        android:textSize="20sp"
-        android:id="@+id/tv_404"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchCardView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

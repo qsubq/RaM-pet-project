@@ -39,7 +39,7 @@
             android:id="@+id/tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/grey"
+            android:textColor="@color/text_color_500"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.169"
@@ -51,7 +51,7 @@
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:layout_marginTop="12dp"
-            android:textColor="@color/grey"
+            android:textColor="@color/text_color_500"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -99,7 +99,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="6dp"
                 android:text="@string/species_text_field"
-                android:textColor="@color/white_gray"
+                android:textColor="@color/text_color_200"
                 android:textSize="20sp"
                 android:textStyle="italic" />
 
@@ -108,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:textColor="@color/grey"
+                android:textColor="@color/text_color_500"
                 android:textSize="20sp" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
                 android:text="@string/type_text_field"
-                android:textColor="@color/white_gray"
+                android:textColor="@color/text_color_200"
                 android:textSize="20sp"
                 android:textStyle="italic" />
 
@@ -125,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:textColor="@color/grey"
+                android:textColor="@color/text_color_500"
                 android:textSize="20sp" />
 
 
@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
                 android:text="@string/origin_text_field"
-                android:textColor="@color/white_gray"
+                android:textColor="@color/text_color_200"
                 android:textSize="20sp"
                 android:textStyle="italic" />
 
@@ -142,7 +142,7 @@
                 android:id="@+id/tv_origin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/grey"
+                android:textColor="@color/text_color_500"
                 android:textSize="20sp"
                 android:layout_marginBottom="15dp"/>
         </androidx.appcompat.widget.LinearLayoutCompat>

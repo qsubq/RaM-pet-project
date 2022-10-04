@@ -26,6 +26,7 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         init()
         binding.editTextSearch.doAfterTextChanged {
             viewModel.submitQuery(it.toString())
@@ -40,9 +41,9 @@ class SearchFragment : Fragment() {
             adapter.setList(list)
         }
         viewModel.errorLiveData.observe(viewLifecycleOwner) { error ->
-            view?.let {
-                Snackbar.make(it, error, 5000).show()
-            }
+                view?.let {
+                    Snackbar.make(it, error, 5000).show()
+                }
         }
     }
 }

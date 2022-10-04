@@ -9,11 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.github.qsubq.rampetproject.databinding.FragmentEpisodesBinding
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class EpisodesFragment : Fragment() {
@@ -26,7 +23,7 @@ class EpisodesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentEpisodesBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -43,9 +40,9 @@ class EpisodesFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
-    private fun loadingData(){
-        lifecycleScope.launch{
-            viewModel.listData.collect{pagingData ->
+    private fun loadingData() {
+        lifecycleScope.launch {
+            viewModel.listData.collect { pagingData ->
                 adapter.submitData(pagingData)
             }
         }
