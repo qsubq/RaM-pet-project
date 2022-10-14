@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.github.qsubq.rampetproject.app.extension.showToast
 import com.github.qsubq.rampetproject.databinding.FragmentSearchBinding
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,14 +37,14 @@ class SearchFragment : Fragment() {
     private fun init() {
         val adapter = SearchAdapter()
         binding.rcView.adapter = adapter
-        
+
         viewModel.characterLiveData.observe(viewLifecycleOwner) { list ->
             adapter.setList(list)
         }
         viewModel.errorLiveData.observe(viewLifecycleOwner) { error ->
-                view?.let {
-                    Snackbar.make(it, error, 5000).show()
-                }
+            view?.let {
+                showToast(error)
+            }
         }
     }
 }

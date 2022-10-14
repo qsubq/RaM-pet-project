@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.github.qsubq.rampetproject.app.extension.showToast
 import com.github.qsubq.rampetproject.data.repository.RemoteRepositoryImpl.NetworkResult
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,15 +53,11 @@ class RandomCharacterFragment : Fragment() {
                 viewModel.myUiState.collect { uiState ->
                     when (uiState) {
                         is NetworkResult.Success -> adapter.setList(uiState.data)
-                        is NetworkResult.Error -> showError(uiState.message)
-                        is NetworkResult.Exception -> showError(uiState.e.toString())
+                        is NetworkResult.Error -> showToast(uiState.message.toString())
+                        is NetworkResult.Exception -> showToast(uiState.e.toString())
                     }
                 }
             }
         }
-    }
-
-    private fun showError(message: String?) {
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 }
