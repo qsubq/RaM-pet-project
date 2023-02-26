@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.github.qsubq.rampetproject.app.extension.showToast
+import com.github.qsubq.rampetproject.app.presentation.utils.MyDialogFragment
 import com.github.qsubq.rampetproject.data.repository.RemoteRepositoryImpl.NetworkResult
 import com.github.qsubq.rampetproject.databinding.FragmentCharacterBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,13 +47,14 @@ class RandomCharacterFragment : Fragment() {
             binding.SwipeRefreshLayout.isRefreshing = false
         }
 
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.myUiState.collect { uiState ->
                     when (uiState) {
                         is NetworkResult.Success -> adapter.setList(uiState.data)
-                        is NetworkResult.Error -> showToast(uiState.message.toString())
-                        is NetworkResult.Exception -> showToast(uiState.e.toString())
+                        is NetworkResult.Error -> MyDialogFragment(uiState.message.toString()).show(requireActivity().supportFragmentManager, "ErrorDialog")
+                        is NetworkResult.Exception -> MyDialogFragment(uiState.e.toString()).show(requireActivity().supportFragmentManager, "ErrorDialog")
                     }
                 }
             }
